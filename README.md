@@ -1,8 +1,8 @@
-# Autotests toDoMVC feature using codeceptjs
+# Autotests for toDoMVC feature using codeceptjs
 
-This is a repository for some tests toDoMVC feature.
+This is a repository for some tests for toDoMVC feature.
 
-Used packages:
+Packages that were used:
 
 - codeceptjs ^2.5.0
 - webdriver: ^5.22.3
