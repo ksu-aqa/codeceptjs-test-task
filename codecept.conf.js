@@ -10,18 +10,21 @@ exports.config = {
   helpers: {
     WebDriver: {
       url: 'http://localhost',
-      browser: 'chrome'
+      browser: 'chrome',
+      restart: false
     }
   },
   include: {
+    'tdmvcPage': './pages/tdmvcPage.js',
     I: './steps_file.js'
   },
   bootstrap: null,
   mocha: {},
   name: 'codeceptjs-test-task',
   plugins: {
-    retryFailedStep: {
-      enabled: true
+    wdio: {
+      enabled: true,
+      services: ['selenium-standalone']
     },
     screenshotOnFail: {
       enabled: true
