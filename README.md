@@ -7,6 +7,12 @@ Packages that were used:
 - codeceptjs ^2.5.0
 - webdriver: ^5.22.3
 
+Tests can be executed using the command:
+
+```
+npx codeceptjs run --steps
+```
+
 ## Links
 
 More information about e2e testing framework on
