@@ -1,0 +1,24 @@
+{
+  "name": "codeceptjs-test-task",
+  "version": "1.0.0",
+  "description": "This is a repository for some tests for toDoMVC feature.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksu-aqa/codeseptionjs-test-task.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksu-aqa/codeseptionjs-test-task/issues"
+  },
+  "homepage": "https://github.com/ksu-aqa/codeseptionjs-test-task#readme",
+  "devDependencies": {
+    "codeceptjs": "^2.5.0",
+    "webdriver": "^5.22.3"
+  }
+}
