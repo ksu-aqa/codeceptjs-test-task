@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/ksu-aqa/codeseptionjs-test-task#readme",
   "devDependencies": {
+    "@wdio/selenium-standalone-service": "^5.16.10",
+    "allure-commandline": "^2.13.0",
     "codeceptjs": "^2.5.0",
     "webdriver": "^5.22.3"
   }
