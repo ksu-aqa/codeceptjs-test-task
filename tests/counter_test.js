@@ -12,8 +12,8 @@ Scenario('test todo counter on add item', async (I, tdmvcPage) => {
 
 Scenario('test todo counter on remove item', async (I, tdmvcPage) => {
   tdmvcPage.createMultipleTd();
-  I.moveCursorTo(tdmvcPage.lastTd);
-  I.click(tdmvcPage.lastTd.find('.destroy'));
+  const lastTd = tdmvcPage.getLastTd();
+  tdmvcPage.removeTd(lastTd);
   let tdCount = await I.grabNumberOfVisibleElements(tdmvcPage.tdInList);
   I.see(tdCount, tdmvcPage.tdLeftCounter);
 });

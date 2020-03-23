@@ -7,9 +7,8 @@ module.exports = {
 
   tdTitle: 'test',
   updatedTdTitle: 'New text',
-	
-  lastTd: locate('.todo-list').find('li:last-child'),
-  lastTdLabel: '.todo-list li:last-child label',
+
+  tdLabel: '.todo-list li label',
 	
   tdInList: 'label.ng-binding',
   tdLeftCounter: '.todo-count .ng-binding',
@@ -20,17 +19,27 @@ module.exports = {
 	
   completedCheckbox: {css: '[ng-model="todo.completed"]'},
   clearCompletedButton: {css: '.clear-completed'},
+  removeButton: {css: '.destroy'},
 
   createTd() {
     I.fillField(this.fields.tdInput, this.tdTitle);
     I.pressKey("Enter");
 
-    return this.lastTd;
+    return locate('.todo-list').find('li');
   },
 
   createMultipleTd() {
     for (let i = 0; i < 5; i++) {
       this.createTd(this.tdTitle + i);
     }
+  },
+
+  getLastTd() {
+  	return locate('.todo-list').find('li:last-child');
+  },
+
+  removeTd(locator) {
+    I.moveCursorTo(locator);
+    I.click(locator.find(this.removeButton));
   }
 }
