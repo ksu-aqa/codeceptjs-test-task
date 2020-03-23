@@ -1,17 +1,17 @@
 Feature('Tab switcher');
 
-Before((I) => {
-  I.amOnPage('http://todomvc.com/examples/typescript-angular');
-});
+const { tdmvcPage } = inject();
 
-Scenario('test active tab', (I, tdmvcPage) => {
+Before(I => I.amOnPage(tdmvcPage.url));
+
+Scenario('test active tab', (I) => {
   tdmvcPage.createMultipleTd();
   I.click(tdmvcPage.completedCheckbox);
   I.click(tdmvcPage.activeTab);
   I.dontSeeElement(tdmvcPage.completedTd);
 });
 
-Scenario('test completed tab', (I, tdmvcPage) => {
+Scenario('test completed tab', (I) => {
   tdmvcPage.createMultipleTd();
   I.click(tdmvcPage.completedCheckbox);
   I.click(tdmvcPage.completedTab);

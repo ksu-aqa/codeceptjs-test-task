@@ -1,16 +1,16 @@
 Feature('Completed todo');
 
-Before((I) => {
-  I.amOnPage('http://todomvc.com/examples/typescript-angular');
-});
+const { tdmvcPage } = inject();
 
-Scenario('mark todo item as completed', async (I, tdmvcPage) => {
+Before(I => I.amOnPage(tdmvcPage.url));
+
+Scenario('mark todo item as completed', async (I) => {
   tdmvcPage.createTd();
   I.click(tdmvcPage.completedCheckbox);
   I.seeElement(tdmvcPage.completedTd);
 });
 
-Scenario('mark completed todo as active', async (I, tdmvcPage) => {
+Scenario('mark completed todo as active', async (I) => {
   tdmvcPage.createTd();
   I.click(tdmvcPage.completedCheckbox);
   I.seeElement(tdmvcPage.completedTd);
@@ -18,7 +18,7 @@ Scenario('mark completed todo as active', async (I, tdmvcPage) => {
   I.dontSeeElement(tdmvcPage.completedTd);
 });
 
-Scenario('test clear completed button', async (I, tdmvcPage) => {
+Scenario('test clear completed button', async (I) => {
   tdmvcPage.createMultipleTd();
   const allTd = await I.grabNumberOfVisibleElements(tdmvcPage.tdInList);
   I.click(tdmvcPage.completedCheckbox);

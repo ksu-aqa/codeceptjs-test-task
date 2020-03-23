@@ -1,16 +1,16 @@
 Feature('Todo counter');
 
-Before((I) => {
-  I.amOnPage('http://todomvc.com/examples/typescript-angular');
-});
+const { tdmvcPage } = inject();
 
-Scenario('test todo counter on add item', async (I, tdmvcPage) => {
+Before(I => I.amOnPage(tdmvcPage.url));
+
+Scenario('test todo counter on add item', async (I) => {
   tdmvcPage.createMultipleTd();
   let tdCount = await I.grabNumberOfVisibleElements(tdmvcPage.tdInList);
   I.see(tdCount, tdmvcPage.tdLeftCounter);
 });
 
-Scenario('test todo counter on remove item', async (I, tdmvcPage) => {
+Scenario('test todo counter on remove item', async (I) => {
   tdmvcPage.createMultipleTd();
   const lastTd = tdmvcPage.getLastTd();
   tdmvcPage.removeTd(lastTd);

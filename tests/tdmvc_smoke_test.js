@@ -1,23 +1,23 @@
 Feature('TodoMVC');
 
-Before((I) => {
-  I.amOnPage('http://todomvc.com/examples/typescript-angular');
-});
+const { tdmvcPage } = inject();
 
-Scenario('create todo item', (I, tdmvcPage) => {
+Before(I => I.amOnPage(tdmvcPage.url));
+
+Scenario('create todo item', (I) => {
   tdmvcPage.createTd();
-  I.see(tdmvcPage.tdTitle, tdmvcPage.tdLabel);
+  I.see(tdmvcPage.tdTitle, tdmvcPage.getLastTdLabel());
 });
 
-Scenario('remove todo item', (I, tdmvcPage) => {
+Scenario('remove todo item', (I) => {
   const toDo = tdmvcPage.createTd();
   tdmvcPage.removeTd(toDo);
   I.dontSeeElement(toDo);
 });
 
-Scenario('edit todo item', (I, tdmvcPage) => {
-  const editToDo = tdmvcPage.createTd().find('input.edit');
-  I.doubleClick(tdmvcPage.tdLabel);
+Scenario('edit todo item', (I) => {
+  const editToDo = tdmvcPage.getInputEditField();
+  I.doubleClick(tdmvcPage.getLastTdLabel());
   I.updateField(editToDo, tdmvcPage.updatedTdTitle)
-  I.see(tdmvcPage.updatedTdTitle, tdmvcPage.tdLabel);
+  I.see(tdmvcPage.updatedTdTitle, tdmvcPage.getLastTdLabel());
 });

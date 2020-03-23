@@ -1,14 +1,14 @@
 const { I } = inject();
 
 module.exports = {
+  url: 'http://todomvc.com/examples/typescript-angular/',
+
   fields: {
     tdInput: '.new-todo',  
   },
 
   tdTitle: 'test',
   updatedTdTitle: 'New text',
-
-  tdLabel: '.todo-list li label',
 	
   tdInList: 'label.ng-binding',
   tdLeftCounter: '.todo-count .ng-binding',
@@ -21,6 +21,18 @@ module.exports = {
   clearCompletedButton: {css: '.clear-completed'},
   removeButton: {css: '.destroy'},
 
+  getInputEditField() {
+    return this.createTd().find('input.edit');
+  },
+
+  getLastTd() {
+    return locate('.todo-list').find('li:last-child');
+  },
+
+  getLastTdLabel() {
+    return this.getLastTd().find('label');
+  },
+
   createTd() {
     I.fillField(this.fields.tdInput, this.tdTitle);
     I.pressKey("Enter");
@@ -32,10 +44,6 @@ module.exports = {
     for (let i = 0; i < 5; i++) {
       this.createTd(this.tdTitle + i);
     }
-  },
-
-  getLastTd() {
-  	return locate('.todo-list').find('li:last-child');
   },
 
   removeTd(locator) {
