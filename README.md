@@ -14,6 +14,8 @@ Tests can be executed using the command:
 npx codeceptjs run --steps
 ```
 
+## Allure report
+
 Run tests with allure plugin enabled:
 ```
 npx codeceptjs run --plugins allure
